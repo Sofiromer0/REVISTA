@@ -1,0 +1,837 @@
+/* ========================
+   BTS — REVISTA
+   Estilo editorial: serif elegante, lila/blanco, mucho aire
+   ======================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+:root {
+  --lila-claro: #c9b8e0;
+  --lila:       #a78bc9;
+  --lila-fuerte:#7a5fa8;
+  --morado:     #4a3878;
+  --crema:      #fdfaf5;
+  --blanco:     #ffffff;
+  --negro:      #1a1a1a;
+  --gris:       #6a6a7a;
+  --gris-claro: #d8d4dc;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--blanco);
+  color: var(--negro);
+  line-height: 1.6;
+}
+
+/* ========================
+   TRANSICIONES DE PÁGINA
+   ======================== */
+
+.fade-in {
+  animation: fadeIn 0.7s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body.fade-out {
+  animation: fadeOut 0.4s ease both;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ========================
+   HOME / PORTADA
+   ======================== */
+
+body#home {
+  min-height: 100vh;
+  background: var(--blanco);
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fecha arriba a la izquierda (tipo revista) */
+.fecha-portada {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--negro);
+  text-transform: none;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+/* Título BTS gigante */
+body#home h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(140px, 25vw, 340px);
+  color: var(--lila-claro);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Línea decorativa bajo BTS con mes */
+.linea-fecha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.linea-fecha .barra {
+  flex: 0 0 80px;
+  height: 1px;
+  background: var(--negro);
+}
+
+.linea-fecha .mes {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--negro);
+  letter-spacing: 0.05em;
+}
+
+/* Espacio para foto grupal */
+.foto-portada {
+  flex: 1;
+  background: var(--gris-claro);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.foto-portada img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.foto-portada::before {
+  content: 'Foto grupal BTS — Mayo 2026';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--gris);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Botones de navegación tipo Croma */
+.botones-home {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-nav {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--blanco);
+  background: var(--morado);
+  padding: 13px 26px;
+  border-radius: 100px;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.btn-nav:hover {
+  background: var(--lila-fuerte);
+  transform: translateY(-2px);
+}
+
+/* Garabatos morados decorativos en la portada */
+.garabato {
+  position: absolute;
+  color: var(--lila-fuerte);
+  font-size: 2rem;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.garabato.corazon-1 { top: 45%; left: 8%;  transform: rotate(-15deg); }
+.garabato.corazon-2 { top: 60%; right: 9%; transform: rotate(20deg); }
+.garabato.estrella  { top: 35%; right: 12%; transform: rotate(10deg); }
+
+/* ========================
+   SECCIONES INTERNAS
+   ======================== */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Encabezado con título grande tipo revista */
+header.seccion-header {
+  padding: 60px 8% 30px;
+  text-align: left;
+  background: var(--blanco);
+  position: relative;
+}
+
+header.seccion-header .numero-pagina {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--gris);
+  position: absolute;
+  top: 30px;
+  right: 8%;
+}
+
+header.seccion-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(60px, 12vw, 140px);
+  color: var(--negro);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+}
+
+header.seccion-header h1 .inicial {
+  /* La inicial se ve gigante y elegante */
+  font-weight: 500;
+}
+
+header.seccion-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--gris);
+  margin-top: 16px;
+  max-width: 700px;
+}
+
+/* Línea decorativa bajo el título */
+.linea-titulo {
+  height: 1px;
+  background: var(--negro);
+  margin: 30px 8% 0;
+  width: calc(100% - 16%);
+}
+
+/* Nav superior */
+nav.barra-nav {
+  background: var(--blanco);
+  padding: 18px 8%;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--gris-claro);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.95);
+}
+
+nav.barra-nav a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gris);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-bottom-color 0.25s ease;
+}
+
+nav.barra-nav a:hover,
+nav.barra-nav a.active {
+  color: var(--morado);
+  border-bottom-color: var(--lila);
+}
+
+/* Sección de contenido */
+section.contenido {
+  padding: 50px 8% 60px;
+}
+
+/* Subtítulo de sección con barra decorativa */
+.subtitulo-cap {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(38px, 6vw, 68px);
+  color: var(--negro);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin: 50px 0 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.subtitulo-cap::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: var(--negro);
+  margin-top: 10px;
+}
+
+/* Bloques de texto del artículo */
+.texto-articulo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--negro);
+  margin-bottom: 28px;
+  max-width: 720px;
+}
+
+.texto-articulo p {
+  margin-bottom: 18px;
+}
+
+.descarga-pdf {
+    text-align: center;
+    margin: 20px 0; /* Opcional: espacio arriba y abajo */
+}
+
+.texto-articulo p strong {
+  font-weight: 700;
+  color: var(--morado);
+}
+
+/* Lista con bullets pequeñas */
+.lista-temas {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--negro);
+  margin: 8px 0 28px 20px;
+  max-width: 600px;
+}
+
+.lista-temas li {
+  list-style: none;
+  position: relative;
+  padding-left: 18px;
+}
+
+.lista-temas li::before {
+  content: '·';
+  color: var(--lila-fuerte);
+  position: absolute;
+  left: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  top: 4px;
+}
+
+/* Cita destacada (estilo revista) */
+.cita {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--morado);
+  text-align: center;
+  margin: 40px auto;
+  padding: 24px 40px;
+  border-top: 1px solid var(--gris-claro);
+  border-bottom: 1px solid var(--gris-claro);
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.cita .fuente {
+  display: block;
+  font-style: normal;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-top: 12px;
+}
+
+/* ========================
+   IMÁGENES
+   ======================== */
+
+.img-placeholder {
+  width: 100%;
+  background: var(--gris-claro);
+  border-radius: 4px;
+  margin: 32px 0 60px;
+  position: relative;
+  min-height: 260px;
+  aspect-ratio: 16/10;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-placeholder > img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; 
+}
+
+
+.img-placeholder.mitad img,
+.img-placeholder.izquierda img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img-placeholder > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.img-placeholder > figcaption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Oculta imgs vacías para que solo se vea el placeholder limpio */
+.img-placeholder img[src=""],
+.img-placeholder img:not([src]),
+.disco .img-disco img[src=""],
+.disco .img-disco img:not([src]),
+.foto-miembro img[src=""],
+.foto-miembro img:not([src]),
+.foto-portada img[src=""],
+.foto-portada img:not([src]) {
+  display: none;
+}
+
+.img-placeholder figcaption {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--gris);
+  line-height: 1.5;
+  padding: 10px 0 0;
+  text-align: left;
+  background: var(--blanco);
+}
+
+/* Placeholder de texto cuando no hay imagen */
+.img-placeholder::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--gris);
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 0 20px;
+  z-index: 0;
+}
+
+.img-placeholder img {
+  position: relative;
+  z-index: 1;
+}
+
+.img-placeholder.mitad {
+  float: right;
+  width: 45%;
+  margin: 6px 0 50px 32px;
+  aspect-ratio: 4/5;
+}
+
+.img-placeholder.izquierda {
+  float: left;
+  width: 45%;
+  margin: 6px 32px 50px 0;
+  aspect-ratio: 4/5;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Galería de discografía */
+.galeria-discos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0 40px;
+}
+
+.disco {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.disco .img-disco {
+  aspect-ratio: 1/1;
+  background: var(--gris-claro);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.disco .img-disco img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.disco .img-disco::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  color: var(--gris);
+  text-align: center;
+  padding: 8px;
+  z-index: 0;
+}
+
+.disco .img-disco img {
+  position: relative;
+  z-index: 1;
+}
+
+.disco .nombre-disco {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--negro);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+/* Bloque de era de discografía */
+.era-disco {
+  margin: 40px 0;
+}
+
+.era-disco h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--negro);
+  line-height: 1;
+  margin-bottom: 8px;
+  display: inline-block;
+  position: relative;
+  padding-right: 40px;
+}
+
+.era-disco h3::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  width: 30px;
+  height: 1px;
+  background: var(--negro);
+}
+
+
+/* ========================
+   FICHA DE MIEMBRO
+   ======================== */
+
+.miembro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  margin-bottom: 80px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.miembro:last-of-type {
+  border-bottom: none;
+}
+
+.miembro .info-miembro h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(60px, 8vw, 110px);
+  color: var(--negro);
+  line-height: 0.95;
+  margin-bottom: 20px;
+}
+
+.miembro .texto-articulo {
+  max-width: none;
+}
+
+.miembro .foto-miembro {
+  background: var(--gris-claro);
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  position: relative;
+}
+
+.miembro .foto-miembro img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.miembro .foto-miembro::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--gris);
+  text-align: center;
+  padding: 0 20px;
+  z-index: 0;
+}
+
+.miembro .subtitulo-cap {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 30px;
+}
+
+/* Marcas / colaboraciones — bloque informativo */
+.bloque-info {
+  background: var(--crema);
+  border-left: 3px solid var(--lila);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--negro);
+}
+
+.bloque-info h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--morado);
+  margin-bottom: 8px;
+}
+
+/* ========================
+   INFLUENCIA — grid de eventos
+   ======================== */
+
+.grid-eventos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 30px 0 40px;
+}
+
+.evento {
+  background: var(--crema);
+  padding: 24px;
+  border-radius: 4px;
+  border-top: 3px solid var(--lila);
+}
+
+.evento h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--morado);
+  margin-bottom: 10px;
+}
+
+.evento p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--negro);
+}
+
+/* Lista de premios */
+.lista-premios {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--negro);
+  margin: 20px 0 30px;
+  max-width: 750px;
+}
+
+.lista-premios li {
+  list-style: none;
+  position: relative;
+  padding: 10px 0 10px 32px;
+  border-bottom: 1px dotted var(--gris-claro);
+}
+
+.lista-premios li::before {
+  content: '✦';
+  color: var(--lila-fuerte);
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-size: 0.9rem;
+}
+
+/* ========================
+   ELEMENTOS DECORATIVOS
+   ======================== */
+
+.divisor {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lila), transparent);
+  margin: 48px 0;
+}
+
+/* Cita de cierre tipo "Forever, we are young" */
+.cierre {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.cierre .frase {
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--morado);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.cierre .cancion {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+/* Footer */
+footer.pie {
+  background: var(--negro);
+  color: rgba(255,255,255,0.7);
+  padding: 30px 8%;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+footer.pie a {
+  color: var(--lila-claro);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+
+@media (max-width: 768px) {
+  body#home {
+    padding: 30px 25px 40px;
+  }
+
+  .img-placeholder.mitad,
+  .img-placeholder.izquierda {
+    float: none;
+    width: 100%;
+    margin: 24px 0;
+    aspect-ratio: 16/10;
+    
+  }
+
+
+  .miembro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  header.seccion-header {
+    padding: 50px 6% 24px;
+  }
+
+  section.contenido {
+    padding: 40px 6% 50px;
+  }
+
+  nav.barra-nav {
+    gap: 18px;
+    padding: 14px 6%;
+  }
+
+  .galeria-discos {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+}
