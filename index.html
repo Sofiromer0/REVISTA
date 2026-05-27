@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS — Revista</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="home" class="fade-in">
+
+  <span class="fecha-portada">Mayo 2026</span>
+
+  <h1>BTS</h1>
+
+  <div class="linea-fecha">
+    <span class="barra"></span>
+    <span class="mes">Mayo 2026</span>
+    <span class="barra"></span>
+  </div>
+
+  <div class="botones-home">
+    <a href="seccion1.html" class="btn-nav">¿Quiénes son?</a>
+    <a href="seccion2.html" class="btn-nav">Discografía</a>
+    <a href="seccion3.html" class="btn-nav">Integrantes</a>
+    <a href="seccion4.html" class="btn-nav">Influencia</a>
+  </div>
+
+  <span class="garabato corazon-1">♥</span>
+  <span class="garabato corazon-2">♥</span>
+  <span class="garabato estrella">✦</span>
+
+<script>
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#') && !href.startsWith('http') && !href.endsWith('.pdf')) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => { window.location = href; }, 380);
+      });
+    }
+  });
+</script>
+</body>
+</html>
